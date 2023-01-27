@@ -94,9 +94,6 @@ public class HttpAuthenticator {
         return new AuthenticationExchange().authenticate();
     }
 
-    private boolean isAuthenticated() {
-        return authenticated;
-    }
 
     /**
      * Perform a login for the supplied username and password using the pre-configured mechanism name.
@@ -309,6 +306,10 @@ public class HttpAuthenticator {
 
         AuthenticationExchange() {
             super(httpExchangeSpi);
+        }
+
+        private boolean isAuthenticated() {
+            return authenticated;
         }
 
         private boolean authenticate() throws HttpAuthenticationException {
