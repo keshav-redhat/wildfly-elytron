@@ -20,6 +20,7 @@ package org.wildfly.security.http;
 
 import static org.junit.Assert.assertEquals;
 import static org.wildfly.security.http.HttpConstants.BASIC_NAME;
+import static org.wildfly.security.http.HttpConstants.BEARER_TOKEN;
 import static org.wildfly.security.http.HttpConstants.CONFIG_REALM;
 import static org.wildfly.security.http.HttpConstants.DIGEST_NAME;
 import static org.wildfly.security.http.HttpConstants.OK;
@@ -76,7 +77,7 @@ public class HttpAuthenticatorTest extends AbstractBaseHttpTest {
             + "       opaque=\"FQhe/qaU925kfnzjCev0ciny7QMkPqMAFRtzCUYo5tdS\"";
 
     private CallbackHandler callbackHandler() {
-        return getCallbackHandler("Mufasa", "http-auth@example.org", "Circle of Life");
+        return getCallbackHandler("Mufasa", "http-auth@example.org", "Circle of Life", null);
     }
 
     private void testOneOfThree() throws Exception {
@@ -255,5 +256,24 @@ public class HttpAuthenticatorTest extends AbstractBaseHttpTest {
 
         authenticateWithDigestMD5();
     }
+    @Test
+    public void testBearerAuthenticationMechanism() throws Exception{
+        HttpServerAuthenticationMechanism mechanism = bearerFactory.createAuthenticationMechanism(BEARER_TOKEN, Collections.emptyMap(), getCallbackHandler(null, "testrealm@host.com", null, "random"));
 
+        //Test no authentication in progress
+        TestingHttpServerRequest request1 = new TestingHttpServerRequest(new String[]{});
+        mechanism.evaluateRequest(request1);
+        Assert.assertEquals(Status.NO_AUTH, request1.getResult());
+
+        //Test unsuccessful authentication
+        TestingHttpServerRequest request2 = new TestingHttpServerRequest(new String[]{"Bearer test"});
+        mechanism.evaluateRequest(request2);
+        Assert.assertEquals(Status.FAILED, request2.getResult());
+        Assert.assertEquals(UNAUTHORIZED, request2.getResponse().getStatusCode());
+
+        //Test successful Authentication
+        TestingHttpServerRequest request3 = new TestingHttpServerRequest(new String[]{"Bearer random"});
+        mechanism.evaluateRequest(request3);
+        Assert.assertEquals(Status.COMPLETE, request3.getResult());
+    }
 }
