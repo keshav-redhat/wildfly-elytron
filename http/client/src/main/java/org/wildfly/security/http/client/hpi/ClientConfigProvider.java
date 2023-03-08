@@ -7,4 +7,5 @@ import java.net.URI;
 public interface ClientConfigProvider {
     String getUsername(URI uri) throws ClientConfigException;
     String getPassword(URI uri) throws ClientConfigException;
+    String getHttpAuthenticationType(URI uri) throws ClientConfigException;
 }

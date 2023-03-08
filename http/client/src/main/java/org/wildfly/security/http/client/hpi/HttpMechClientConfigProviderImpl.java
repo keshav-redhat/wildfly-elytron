@@ -47,4 +47,9 @@ public class HttpMechClientConfigProviderImpl implements ClientConfigProvider{
             throw new ClientConfigException("Password callback handling unsucessfull");
         }
     }
+
+    @Override
+    public String getHttpAuthenticationType(URI uri) throws ClientConfigException {
+        return AUTH_CONTEXT_CLIENT.getHttpMechanismType(AUTH_CONTEXT_CLIENT.getAuthenticationConfiguration(uri, AuthenticationContext.captureCurrent()));
+    }
 }

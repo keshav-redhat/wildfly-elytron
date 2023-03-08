@@ -15,11 +15,12 @@ public class ElytronHttpClient {
     private static String basicAuth(String username, String password) {
         return "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
     }
-    public static void connect(String uri) throws Exception{
+    public String connect(String uri) throws Exception{
         Iterator<ClientConfigProvider> serviceLoaderIterator = ServiceLoader.load(ClientConfigProvider.class).iterator();
         ClientConfigProvider clientConfigProvider = serviceLoaderIterator.next();
         String username = clientConfigProvider.getUsername(new URI(uri));
         String password = clientConfigProvider.getPassword(new URI(uri));
+        String AuthType = clientConfigProvider.getHttpAuthenticationType(new URI(uri));
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -27,5 +28,6 @@ public class ElytronHttpClient {
                 .header("Authorization",basicAuth(username,password))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.statusCode()+"";
     }
 }
