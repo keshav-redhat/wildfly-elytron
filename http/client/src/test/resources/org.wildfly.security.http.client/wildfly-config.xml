@@ -17,7 +17,17 @@
 -->
 <configuration>
     <authentication-client xmlns="urn:elytron:client:1.8">
-
+        <credential-stores>
+            <credential-store name="mycredstore">
+                <attributes>
+                    <attribute name="keyStoreType" value="JCEKS"/>
+                    <attribute name="location" value="target/ks-cred-stores/mycredstore.cs"></attribute>
+                </attributes>
+                <protection-parameter-credentials>
+                    <clear-password password="StorePassword"/>
+                </protection-parameter-credentials>
+            </credential-store>
+        </credential-stores>
         <authentication-rules>
             <rule use-configuration="default-config"/>
         </authentication-rules>

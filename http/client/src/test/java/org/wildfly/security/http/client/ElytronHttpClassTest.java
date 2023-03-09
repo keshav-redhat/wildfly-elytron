@@ -9,6 +9,7 @@ public class ElytronHttpClassTest {
 
     @Test
     public void testConnect() throws Exception {
+        System.setProperty("wildfly.config.url", ElytronHttpClassTest.class.getClass().getResource("wildfly-config.xml").toExternalForm());
         String code = elytronHttpClient.connect("http://localhost:8080/servlet-security/SecuredServlet");
         Assert.assertEquals("200",code);
     }
