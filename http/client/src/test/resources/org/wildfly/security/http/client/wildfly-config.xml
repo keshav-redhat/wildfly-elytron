@@ -14,20 +14,11 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+    <http-mechanism-selector selector="BASIC"/>
 -->
 <configuration>
     <authentication-client xmlns="urn:elytron:client:1.8">
-        <credential-stores>
-            <credential-store name="mycredstore">
-                <attributes>
-                    <attribute name="keyStoreType" value="JCEKS"/>
-                    <attribute name="location" value="target/ks-cred-stores/mycredstore.cs"></attribute>
-                </attributes>
-                <protection-parameter-credentials>
-                    <clear-password password="StorePassword"/>
-                </protection-parameter-credentials>
-            </credential-store>
-        </credential-stores>
+
         <authentication-rules>
             <rule use-configuration="default-config"/>
         </authentication-rules>
@@ -37,7 +28,7 @@
                 <credentials>
                     <clear-password password="quickstartPwd1!"/>
                 </credentials>
-                <http-mechanism-selector selector="BASIC"/>
+                <http-mechanism-selector name="BASIC"/>
             </configuration>
         </authentication-configurations>
     </authentication-client>

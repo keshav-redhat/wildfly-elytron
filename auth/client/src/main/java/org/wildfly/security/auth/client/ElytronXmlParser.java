@@ -1244,7 +1244,7 @@ public final class ElytronXmlParser {
                         break;
                     }
                     case "http-mechanism-selector": {
-                        if (isSet(foundBits, 15)) throw reader.unexpectedElement();
+                        if (isSet(foundBits, 15) || !xmlVersion.isAtLeast(Version.VERSION_1_8)) throw reader.unexpectedElement();
                         foundBits = setBit(foundBits, 15);
                         final String selector = parseHttpMechanismSelectorType(reader);
                         configuration = andThenOp(configuration, parentConfig -> parentConfig.useHttpMechanism(selector));
@@ -2564,7 +2564,7 @@ public final class ElytronXmlParser {
             }
         }
         if (selector == null) {
-            throw missingAttribute(reader, "selector");
+            throw missingAttribute(reader, "name");
         }
         if (reader.hasNext()) {
             final int tag = reader.nextTag();
