@@ -84,7 +84,6 @@ public class ElytronHttpClassTest {
         });
         context.run(() -> {
             try {
-                HttpServerAuthenticationMechanism mechanism = basicFactory.createAuthenticationMechanism("BASIC", Collections.emptyMap(),getCallbackHandler("quickstartUser","quickstartPwd1!","test-realm"));
                 HttpRequest request = elytronHttpClient.getRequest("http://localhost:8080/servlet-security/SecuredServlet");
                 Assert.assertEquals("Basic cXVpY2tzdGFydFVzZXI6cXVpY2tzdGFydFB3ZDEh",request.headers().allValues("Authorization").get(0));
             }catch (Exception e){

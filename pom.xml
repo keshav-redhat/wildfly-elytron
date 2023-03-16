@@ -264,7 +264,7 @@
                         <notimestamp>true</notimestamp>
                         <doclint>none</doclint>
                         <show>protected</show>
-                        <source>8</source> <!-- See https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+                        <source>11</source> <!-- See https://bugs.openjdk.java.net/browse/JDK-8212233 -->
                         <sourcepath>
                             ${project.basedir}/asn1/src/main/java/;
                             ${project.basedir}/audit/src/main/java/;
