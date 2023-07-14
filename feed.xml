@@ -5,7 +5,21 @@
         <title>WildFly Elytron</title>
         <link>https://wildfly-security.github.io/wildfly-elytron</link>
         <description></description>
-        <lastBuildDate>Mon, 26 Jun 2023 17:05:30 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 14 Jul 2023 08:02:31 +0000</lastBuildDate>
+        
+        <item>
+            <title>Upcoming client side HTTP authentication mechanisms support</title>
+            <link>
+                https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/
+            </link>
+            <description>
+                This feature will introduce a significant enhancement to WildFly Elytron - the addition of client-side HTTP authentication mechanism support. With this new feature, WildFly Elytron will provide a client-side framework for HTTP authentication mechanisms, allowing for secure and seamless communication with secured server. Steps for using Elytron HTTP authentication client...
+            </description>
+            <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+            <guid>
+                https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/
+            </guid>
+        </item>
         
         <item>
             <title>Using Certificate Based Authentication with Mutual TLS without Roles</title>
@@ -130,20 +144,6 @@
             <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
             <guid>
                 https://wildfly-security.github.io/wildfly-elytron/blog/ghc22-recap/
-            </guid>
-        </item>
-        
-        <item>
-            <title>Open Source Day 2022 Recap</title>
-            <link>
-                https://wildfly-security.github.io/wildfly-elytron/blog/ghc22-open-source-day-recap/
-            </link>
-            <description>
-                Last month, the WildFly Elytron team had the great pleasure of participating in Open Source Day, an all-day hackathon that took place as a pre-event before the 2022 Grace Hopper Celebration. This was the WildFly Elytron team&#8217;s third time participating in this event, after having participated in the Summer Open...
-            </description>
-            <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
-            <guid>
-                https://wildfly-security.github.io/wildfly-elytron/blog/ghc22-open-source-day-recap/
             </guid>
         </item>
         

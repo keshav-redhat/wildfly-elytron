@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elytron: Upcoming client side HTTP authentication mechanisms support</title>
+    <script src="/wildfly-elytron/assets/javascript/highlight.pack.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" type="image/png" href="/wildfly-elytron/favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- We override the colours from this theme manually -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="/wildfly-elytron/assets/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="/wildfly-elytron/assets/javascript/hl.js" type="text/javascript"></script>
+    <link rel="alternate" type="application/rss+xml"  href="/wildfly-elytron/feed.xml" title="WildFly Elytron">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135301155-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-135301155-1');
+    </script>
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Upcoming client side HTTP authentication mechanisms support | WildFly Elytron</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Upcoming client side HTTP authentication mechanisms support" />
+<meta name="author" content="Keshav Kumar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This feature will introduce a significant enhancement to WildFly Elytron - the addition of client-side HTTP authentication mechanism support. With this new feature, WildFly Elytron will provide a client-side framework for HTTP authentication mechanisms, allowing for secure and seamless communication with secured server." />
+<meta property="og:description" content="This feature will introduce a significant enhancement to WildFly Elytron - the addition of client-side HTTP authentication mechanism support. With this new feature, WildFly Elytron will provide a client-side framework for HTTP authentication mechanisms, allowing for secure and seamless communication with secured server." />
+<link rel="canonical" href="https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/" />
+<meta property="og:url" content="https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/" />
+<meta property="og:site_name" content="WildFly Elytron" />
+<meta property="og:image" content="https://wildfly-security.github.io/wildfly-elytron/assets/images/wildfly-elytron-logo.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-07-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wildfly-security.github.io/wildfly-elytron/assets/images/wildfly-elytron-logo.jpg" />
+<meta property="twitter:title" content="Upcoming client side HTTP authentication mechanisms support" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Keshav Kumar"},"dateModified":"2023-07-12T00:00:00+00:00","datePublished":"2023-07-12T00:00:00+00:00","description":"This feature will introduce a significant enhancement to WildFly Elytron - the addition of client-side HTTP authentication mechanism support. With this new feature, WildFly Elytron will provide a client-side framework for HTTP authentication mechanisms, allowing for secure and seamless communication with secured server.","headline":"Upcoming client side HTTP authentication mechanisms support","image":"https://wildfly-security.github.io/wildfly-elytron/assets/images/wildfly-elytron-logo.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/"},"url":"https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout__header-row ">
+            <!-- Title -->
+            <span class="mdl-layout-title"><h3>Wild<strong>Fly</strong>  Elytron</h3></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link highlight-button Contribute-menuitem" href="/wildfly-elytron/contribute/">Contribute</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link Home-menuitem" href="/wildfly-elytron/">Home</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link Guides-menuitem" href="/wildfly-elytron/guides/">Guides</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link Docs-menuitem" href="/wildfly-elytron/docs/">Docs</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link Community-menuitem" href="/wildfly-elytron/community/">Community</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link mdl-navigation__link--current Blog-menuitem" href="/wildfly-elytron/blog/">Blog</a>
+                    
+                
+                    
+                    
+                    
+                         <a class="mdl-navigation__link GitHub-menuitem" href="https://github.com/wildfly-security/wildfly-elytron">GitHub</a>
+                    
+                
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <div class="side-drawer-logo-container"><h3>Wild<strong>Fly</strong>  Elytron</h3></div>
+        <nav class="mdl-navigation">
+            
+            
+            
+            
+                <a class="mdl-navigation__link highlight-sidebar Contribute-menuitem" href="/wildfly-elytron/contribute/">Contribute</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link Home-menuitem" href="/wildfly-elytron/">Home</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link Guides-menuitem" href="/wildfly-elytron/guides/">Guides</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link Docs-menuitem" href="/wildfly-elytron/docs/">Docs</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link Community-menuitem" href="/wildfly-elytron/community/">Community</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link mdl-navigation__link--current Blog-menuitem" href="/wildfly-elytron/blog/">Blog</a>
+            
+            
+            
+            
+            
+                <a class="mdl-navigation__link GitHub-menuitem" href="https://github.com/wildfly-security/wildfly-elytron">GitHub</a>
+            
+            
+            <!-- mdl-navigation__link--current -->
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            
+            <div class="content">
+                <div class="post-page grid-wrapper">
+  <div class="grid__item width-12-12 width-12-12-m doc-content">
+    <h1>Upcoming client side HTTP authentication mechanisms support</h1>
+    <div class="grid-wrapper">
+      <div class="grid__item width-8-12 width-12-12-m byline-wrapper">
+        
+        
+          <img class="headshot" src="https://www.gravatar.com/avatar/29444c12226e2d0638ca49e594c1bd30">
+        
+        <p class="byline">
+          By <a href="https://github.com/keshav-redhat">Keshav Kumar</a> | July 12, 2023
+          <br>
+          
+            
+              <a style="font-size: 0.9em;" href="/wildfly-elytron/blog/tag/http"> #http</a>
+            
+              <a style="font-size: 0.9em;" href="/wildfly-elytron/blog/tag/authentication"> #authentication</a>
+            
+              <a style="font-size: 0.9em;" href="/wildfly-elytron/blog/tag/client"> #client</a>
+            
+          
+        </p>
+      </div>
+      
+      <div class="grid__item width-4-12 width-12-12-m"><div class="share-page">
+  <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/&title=Upcoming client side HTTP authentication mechanisms support" rel="nofollow" target="_blank" title="Share on LinkedIn">
+    <i class="fab fa-linkedin"></i>
+  </a>
+  <a class="share-twitter" href="https://twitter.com/intent/tweet?text=Upcoming client side HTTP authentication mechanisms support&url=https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/&via=WildFlyAS&related=WildFlyAS" rel="nofollow" target="_blank" title="Share on Twitter">
+    <i class="fab fa-twitter-square"></i>
+  </a>
+  <a class="share-facebook" href="https://facebook.com/sharer.php?u=https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <i class="fab fa-facebook-square"></i>
+  </a>
+  <a class="share-reddit" href="http://www.reddit.com/submit?url=https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Reddit" >
+    <i class="fab fa-reddit-square"></i>
+  </a>
+  <a class="share-email" href="mailto:?subject=Upcoming client side HTTP authentication mechanisms support&amp;body=Upcoming client side HTTP authentication mechanisms support https://wildfly-security.github.io/wildfly-elytron/blog/Add-client-side-HTTP-authentication-mechanism-support/" title="Share via Email" >
+    <i class="fas fa-envelope-square"></i>
+  </a>
+</div>
+</div>
+      <div class="grid__item width-12-12">
+          <div class="paragraph">
+<p>This feature will introduce a significant enhancement to WildFly Elytron - the addition of client-side HTTP authentication mechanism support. With this new feature, WildFly Elytron will provide a client-side framework for HTTP authentication mechanisms, allowing for secure and seamless communication with secured server.</p>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#steps-for-using-elytron-http-authentication-client">Steps for using Elytron HTTP authentication client</a>
+<ul class="sectlevel2">
+<li><a href="#configuring-ssl-for-secure-communication">Configuring SSL for Secure Communication:</a></li>
+<li><a href="#adding-required-credentials">Adding Required Credentials</a></li>
+<li><a href="#code-integration">Code Integration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="steps-for-using-elytron-http-authentication-client"><a class="anchor" href="#steps-for-using-elytron-http-authentication-client"></a>Steps for using Elytron HTTP authentication client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Elytron HTTP client is planned to be used as follows :</p>
+</div>
+<div class="sect2">
+<h3 id="configuring-ssl-for-secure-communication"><a class="anchor" href="#configuring-ssl-for-secure-communication"></a>Configuring SSL for Secure Communication:</h3>
+<div class="paragraph">
+<p>Generate SSL certificates: Use a trusted certificate authority or generate self-signed SSL certificates for the server.</p>
+</div>
+<div class="paragraph">
+<p>Configure SSL in Wildfly Elytron: Update the Wildfly Elytron configuration file (e.g., wildfly-config.xml) to include the SSL configuration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-required-credentials"><a class="anchor" href="#adding-required-credentials"></a>Adding Required Credentials</h3>
+<div class="paragraph">
+<p>Inside Wildfly Elytron configuration file add required credential for authorizing the request</p>
+</div>
+<div class="sect3">
+<h4 id="basic-authentication-mechanism-and-digest-authentication-mechanism"><a class="anchor" href="#basic-authentication-mechanism-and-digest-authentication-mechanism"></a>Basic Authentication Mechanism and Digest Authentication Mechanism</h4>
+<div class="paragraph">
+<p>For Basic Authentication Mechanism, add username and password inside the configuration file</p>
+</div>
+<div class="paragraph">
+<p>For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;set-user-name name="user1"/&gt;
+&lt;credentials&gt;
+   &lt;clear-password password="password1"/&gt;
+&lt;/credentials&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The credentials will be used by the Elytron HTTP client to add a required headers when making a connection to the secured server.</p>
+</li>
+<li>
+<p>Note: Clear password is not recommended in production environment. You can use a credential store instead of the clear text password in production.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="bearer-authentication-mechanism"><a class="anchor" href="#bearer-authentication-mechanism"></a>Bearer Authentication Mechanism</h4>
+<div class="paragraph">
+<p>For Bearer Authentication Mechanism, either add bearer token inside config file</p>
+</div>
+<div class="paragraph">
+<p>For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;credentials&gt;
+   &lt;bearer-token value="dummy-bearer-token"/&gt;
+&lt;/credentials&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or, you can provide the uri with required credential which will be used to get token from that.</p>
+</div>
+<div class="paragraph">
+<p>For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;credentials&gt;
+   &lt;oauth2-bearer-token token-endpoint-uri="http://localhost:8080/http-auth/token"&gt;
+       &lt;resource-owner-credentials name="user" password="dont_tell_me"/&gt;
+       &lt;client-credentials client-id="elytron-client" client-secret="client_secret=dont_tell_me"/&gt;
+   &lt;/oauth2-bearer-token&gt;
+&lt;/credentials&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Elytron HTTP client will add this token to the Authorization header.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-integration"><a class="anchor" href="#code-integration"></a>Code Integration</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set up the Wildfly Elytron module: Ensure that the "wildfly-elytron-http-client" module is included in your project dependencies. This module contains the necessary classes and utilities to enable client-side HTTP authentication.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;dependency&gt;
+   &lt;groupId&gt;org.wildfly.security&lt;/groupId&gt;
+   &lt;artifactId&gt;wildfly-elytron-http-client&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create an instance of org.wildfly.security.http.client.ElytronHttpClient : In your client application code, instantiate an object of the "ElytronHttpClient" class. This will serve as the main interface for sending authenticated HTTP requests.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ElytronHttpClient elytronHttpClient = new ElytronHttpClient();</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build and send authenticated requests: Use the "connect()" methods of the "ElytronHttpClient" class to send HTTP requests to the server. The method signature allows flexibility based on your needs:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If you want to send a GET request with no request body or custom headers, you can simply call connect(uri).</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">URI uri = new URI("http://localhost:8080/wildfly-elytron/http-auth");
+HttpResponse httpResponse = elytronHttpClient.connect(uri);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For more advanced scenarios where you need to customize the request, you can follow these steps:
+Build an instance of HttpRequest using the HttpRequest.newBuilder() method. Set the URI, request method, request body (if applicable), and custom headers.
+Call connect(request) to send the authenticated request, passing the HttpRequest object as a parameter.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">URI uri = new URI("http://localhost:8080/wildfly-elytron/http-auth");
+HttpRequest request = HttpRequest.newBuilder()
+     .uri(uri)
+     .method("POST")
+     .build();
+HttpResponse httpResponse = elytronHttpClient.connect(request);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
